@@ -1,0 +1,81 @@
+COUNTRY COLLECTION
+
+--QUERY 1
+--Retrieve the document where the field's value "C_NAME" is "Canada" in the country collection
+db.countries.findOne({ "C_NAME": "Canada" })
+In JSON format:
+{ "C_NAME": "Canada" }
+
+--QUERY 2
+--Retrieve all documents from the "country" collection
+In JSON format:
+[
+{ "$match": {} }
+]
+
+--QUERY 3
+--Retrieve the documents from the "country" collection where the country name (C_NAME) starts with "Uni" in a case-insensitive manner.
+[ { "$match": { "C_NAME": { "$regex": "^Uni", "$options": "i" } } } ]
+
+--QUERY 4
+--Retrieve the 'C_NAME' and 'C_ISO' fields for documents where the 'C_NAME' is either 'Canada' or 'Mexico'.
+[ { "$match": { "C_NAME": { "$in": ["Canada", "Mexico"] } } }, { "$project": { "C_NAME": 1, "C_ISO": 1 } } ]
+
+--QUERY 5
+--How many documents (records) are there in the country collection for each unique value of 'C_ISO'?
+[ { "$group": { "_id": "$C_ISO", "count": { "$sum": 1 } } } ]
+
+--QUERY 6
+--Retrieve a summary of countries grouped by their ISO standard code, including the list of countries and the total count for each ISO code from the 'country' collection.
+[ { "$group": { "_id": "$C_ISO", "countries": { "$push": "$C_NAME" } } }, { "$project": { "ISO_Standard": "$_id","Countries": "$countries", "Total": {"$size": "$countries" } } } ]
+
+
+MANUFACTURER COLLECTION
+
+--QUERY 1
+--Return the manufacturer with the MANUFACTURE_ID "MN331"
+{
+  "MANUFACTURE_ID": "MN331"
+}
+
+--QUERY 2
+--Return all documents where the M_LOCATION is "Australia"
+{
+  "MANUFACTURE_ID": "MN331"
+}
+
+--QUERY 3
+--To get a count of manufacturers by location
+[
+  {
+    "$group": {
+      "_id": "$M_LOCATION",
+      "count": { "$sum": 1 }
+    }
+  }
+]
+
+ORBIT COLLECTION
+
+--QUERY 1
+--Retrieve documents where the ORBIT_ID is 3
+{ "ORBIT_ID": 3 }
+
+--QUERY 2
+--Retrieve documents where the O_ALTITUDE is greater than 80000000 and O_INCLINATION less than 90000000
+{
+  "O_ALTITUDE": { "$gt": 80000000 },
+  "O_INCLINATION": { "$lt": 90000000 }
+}
+
+--QUERY 3
+--Calculate the average orbital altitude and inclination across all documents
+[
+  {
+    "$group": {
+      "_id": null,
+      "AverageAltitude": { "$avg": "$O_ALTITUDE" },
+      "AverageInclination": { "$avg": "$O_INCLINATION" }
+    }
+  }
+]

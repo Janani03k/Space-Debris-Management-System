@@ -1,0 +1,726 @@
+create database DMA_Project;
+use DMA_Project;
+
+-- 1
+create table ORBIT (
+	ORBIT_ID INT Primary Key,
+	O_ALTITUDE DECIMAL(11,2),
+	O_INCLINATION DECIMAL(11,2),
+	O_PERIOD DECIMAL(11,2));
+INSERT INTO ORBIT (ORBIT_ID, O_ALTITUDE, O_INCLINATION, O_PERIOD)VALUES
+    (1, 75573096.26, 18657393.29, 34560278.21),
+    (2, 53592737.29, 94774970.66, 17294337.26),
+    (3, 80929484.33, 83275059.04, 8496906.52),
+    (4, 86314989.96, 46128196.04, 25527126.45),
+    (5, 85444208.26, 19662222.37, 1685086.23),
+    (6, 22295325.98, 85218290.4, 88785781.14),
+    (7, 17714918.81, 91813259.65, 93713657.89),
+    (8, 14933164.07, 23845022.05, 27884394.25),
+    (9, 9600784.78, 32207947.72, 96389605.93),
+    (10, 24305914.9, 89556682.37, 82797180.49),
+    (11, 72108333.33, 557270.62, 95178955.22),
+    (12, 14890424.08, 57074368.34, 29315117.29),
+    (13, 76654964.6, 39045090.84, 94566158.73),
+    (14, 39963289.04, 87117323.08, 30572663.22),
+    (15, 49695292.79, 30794446.96, 63438497.37),
+    (16, 57022392.43, 68893764.13, 95758784.53),
+    (17, 12693638.18, 71895202.8, 99125652.02),
+    (18, 21653039.79, 33738793.48, 10000471.67),
+    (19, 82483176.31, 41893568.94, 32661766.87),
+    (20, 63858377.62, 98873271.47, 24792772.41),
+    (21, 41563575.24, 20073101.37, 12694615.14),
+    (22, 48996720.29, 2008747.92, 86456905.41),
+    (23, 77554518.92, 29233093.42, 27625389.62),
+    (24, 41242130.54, 69965658.21, 76081355.01),
+    (25, 51058135.22, 4928492.65, 35787739.82),
+    (26, 76488810.35, 65160817.24, 28854486.74),
+    (27, 53821185.44, 25656925.59, 43025215.09),
+    (28, 87173473.91, 27381324.72, 4372014.35),
+    (29, 48931915.04, 4165746.43, 74977968.53),
+    (30, 4359592.36, 16467683.43, 86991902.7);
+SELECT * FROM ORBIT;
+
+-- 2
+create table SPACE_DEBRIS(
+	DEBRIS_ID INT Primary Key,
+	D_SIZE DECIMAL(11,2),
+	D_MASS DECIMAL(11,2),
+	D_ORIGIN VARCHAR (25),
+	D_LAST_OBSERVED_DATE DATE);
+INSERT INTO SPACE_DEBRIS (DEBRIS_ID, D_SIZE, D_MASS, D_ORIGIN, D_LAST_OBSERVED_DATE) VALUES
+(100, 59676192.11, 50627782.5, 'micro meteoroid', '2021-02-09'),
+(101, 24162452.76, 76311808.23, 'launch vehicle debris', '2022-03-21'),
+(102, 60907255.53, 32977925.0, 'launch vehicle debris', '2021-02-27'),
+(103, 85070511.79, 21346950.03, 'micro meteoroid', '2021-02-24'),
+(104, 95575034.8, 79321433.33, 'satellite breakups', '2020-12-25'),
+(105, 4121951.56, 80919564.8, 'intentional destruction', '2021-08-12'),
+(106, 32408910.15, 17986562.98, 'fragmentation', '2021-02-07'),
+(107, 19898032.55, 68251580.56, 'fragmentation', '2022-03-08'),
+(108, 1714102.09, 93130006.2, 'rocket bodies', '2022-06-06'),
+(109, 53400283.14, 80973187.0, 'fragmentation', '2022-10-02'),
+(110, 22338795.07, 13123221.97, 'intentional destruction', '2022-10-27'),
+(111, 8732048.57, 91455960.28, 'lost equipments', '2020-12-06'),
+(112, 7350035.02, 16255089.94, 'satellite breakups', '2021-01-04'),
+(113, 52974283.81, 63556502.3, 'lost equipments', '2021-06-11'),
+(114, 11182544.3, 85563013.5, 'micro meteoroid', '2022-08-05'),
+(115, 32974370.97, 25787049.13, 'intentional destruction', '2021-11-01'),
+(116, 12474901.58, 35403329.54, 'fragmentation', '2022-11-10'),
+(117, 61760989.76, 6830670.02, 'micro meteoroid', '2021-09-24'),
+(118, 61410707.81, 78228495.64, 'micro meteoroid', '2021-08-25'),
+(119, 82957184.97, 72915968.43, 'fragmentation', '2021-10-07'),
+(120, 746560.51, 77411867.47, 'rocket bodies', '2021-07-01'),
+(121, 61035269.41, 86502044.13, 'fragmentation', '2021-03-25'),
+(122, 71010976.75, 98140185.29, 'micro meteoroid', '2021-01-21'),
+(123, 26076846.33, 63647112.24, 'launch vehicle debris', '2022-04-17'),
+(124, 87111456.09, 44822320.03, 'fragmentation', '2020-11-13'),
+(125, 1552288.89, 56226598.8, 'intentional destruction', '2022-09-06'),
+(126, 9729129.83, 85660326.93, 'lost equipments', '2022-05-25'),
+(127, 52811435.82, 94237485.71, 'fragmentation', '2022-01-31'),
+(128, 46921915.82, 66692179.85, 'fragmentation', '2021-09-07'),
+(129, 52269319.15, 46825808.11, 'satellite breakups', '2022-07-24'),
+(130, 45446815.47, 6301933.82, 'launch vehicle debris', '2021-04-01');
+SELECT * FROM SPACE_DEBRIS;
+
+-- 3
+CREATE TABLE PRESENT_IN (
+    DEBRIS_ID INT,
+    ROCKET_ID INT,
+    PRIMARY KEY (DEBRIS_ID, ROCKET_ID),
+    FOREIGN KEY (DEBRIS_ID) REFERENCES SPACE_DEBRIS(DEBRIS_ID),
+    FOREIGN KEY (ROCKET_ID) REFERENCES ROCKET(ROCKET_ID));
+INSERT INTO PRESENT_IN (DEBRIS_ID, ROCKET_ID)VALUES
+(100, 1),
+(101, 2),
+(102, 3),
+(103, 4),
+(104, 5),
+(105, 6),
+(106, 7),
+(107, 8),
+(108, 9),
+(109, 10),
+(110, 11),
+(111, 12),
+(112, 13),
+(113, 14),
+(114, 15),
+(115, 16),
+(116, 17),
+(117, 18),
+(118, 19),
+(119, 20),
+(120, 21),
+(121, 22),
+(122, 23),
+(123, 24),
+(124, 25),
+(125, 26),
+(126, 27),
+(127, 28),
+(128, 29),
+(129, 30);
+SELECT * FROM PRESENT_IN;
+
+-- Add the D_LAST_OBSERVED_DATE column to the PRESENT_IN table
+ALTER TABLE PRESENT_IN
+ADD COLUMN D_LAST_OBSERVED_DATE DATE;
+
+-- Update the D_LAST_OBSERVED_DATE values in PRESENT_IN table
+-- Temporarily disable safe update mode for the current session
+SET SQL_SAFE_UPDATES = 0;
+
+-- Update the D_LAST_OBSERVED_DATE values in PRESENT_IN table
+UPDATE PRESENT_IN PI
+JOIN SPACE_DEBRIS D ON PI.DEBRIS_ID = D.DEBRIS_ID
+SET PI.D_LAST_OBSERVED_DATE = D.D_LAST_OBSERVED_DATE;
+
+-- Re-enable safe update mode
+SET SQL_SAFE_UPDATES = 1;
+-- Verify the changes
+SELECT * FROM PRESENT_IN;
+
+-- 4
+CREATE TABLE ROCKET (
+    ROCKET_ID INT AUTO_INCREMENT PRIMARY KEY,
+    R_NAME VARCHAR(255),
+    R_LAUNCH_DATE DATE,
+    R_PAYLOAD_CAPACITY DECIMAL(10, 2));
+INSERT INTO ROCKET (ROCKET_ID, R_NAME, R_LAUNCH_DATE, R_PAYLOAD_CAPACITY) VALUES
+('001', 'Falcon 9', '2022-03-08', 96888794.44),
+('002', 'Atlas V', '2020-06-03', 21881747.59),
+('003', 'Delta IV', '2021-08-29', 93323675.79),
+('004', 'Soyuz', '2022-04-21', 91607462.31),
+('005', 'Long March 5', '2021-08-14', 63407487.15),
+('006', 'Proton-M', '2020-08-21', 23186115.99),
+('007', 'Ariane 5', '2021-09-01', 96477893.27),
+('008', 'H-IIA', '2021-02-15', 43570870.2),
+('009', 'GSLV Mk III', '2021-10-15', 94905298.8),
+('010', 'Vega', '2022-01-14', 41939695.89),
+('011', 'Antares', '2022-03-27', 93640450.9),
+('012', 'Electron', '2022-03-16', 13871690.94),
+('013', 'Minotaur', '2020-11-20', 55851856.86),
+('014', 'Pegasus', '2021-04-17', 76519964.46),
+('015', 'Starship', '2020-12-29', 5125770.72),
+('016', 'New Shepard', '2021-02-27', 69394098.35),
+('017', 'LauncherOne', '2021-09-13', 87531208.0),
+('018', 'Angara', '2021-02-19', 87005437.36),
+('019', 'Kuaizhou', '2021-12-15', 3163520.05),
+('020', 'Hyperbola-1', '2021-01-26', 21690134.36),
+('021', 'SLS', '2021-06-22', 70662645.38),
+('022', 'GSLV Mk II', '2020-12-30', 60827255.23),
+('023', 'Zenit', '2021-02-21', 97533860.7),
+('024', 'CZ-3B', '2020-08-20', 79226054.26),
+('025', 'CZ-5', '2022-01-05', 71750830.56),
+('026', 'CZ-7', '2022-03-29', 42185049.46),
+('027', 'CZ-11', '2022-05-06', 95650961.74),
+('028', 'CZ-2F', '2022-03-06', 93258888.24),
+('029', 'CZ-6', '2021-10-17', 69194060.07),
+('030', 'CZ-4B', '2020-11-17', 14677508.88);
+SELECT * FROM ROCKET;
+
+-- 5
+CREATE TABLE SATELLITE (
+    SATELLITE_ID varchar(10)  PRIMARY KEY,
+    S_NAME VARCHAR(255),
+    S_STATUS VARCHAR(255),
+    S_LAUNCHED_DATE DATE,
+    S_MASS DECIMAL(10, 2));
+INSERT INTO SATELLITE (SATELLITE_ID, S_NAME, S_STATUS, S_LAUNCHED_DATE, S_MASS) VALUES
+('SAT001', 'Satellite 1', 'inactive', '2021-02-13', 29617702.56),
+('SAT002', 'Satellite 2', 'active', '2022-03-08', 62282918.05),
+('SAT003', 'Satellite 3', 'communication failure', '2021-03-13', 98297509.44),
+('SAT004', 'Satellite 4', 'active', '2022-03-08', 69730844.27),
+('SAT005', 'Satellite 5', 'battery low', '2022-03-08', 37703441.25),
+('SAT006', 'Satellite 6', 'under maintenance', '2020-07-25', 98905535.28),
+('SAT007', 'Satellite 7', 'ready for launch', '2020-05-20', 91044577.52),
+('SAT008', 'Satellite 8', 'operational', '2020-08-31', 42320812.25),
+('SAT009', 'Satellite 9', 'operational', '2022-03-08', 60321428.5),
+('SAT010', 'Satellite 10', 'malfunctioning', '2021-02-24', 99481309.74),
+('SAT011', 'Satellite 11', 'sensor malfunction', '2022-02-18', 73995140.84),
+('SAT012', 'Satellite 12', 'malfunctioning', '2021-01-12', 62876659.66),
+('SAT013', 'Satellite 13', 'sensor malfunction', '2022-03-05', 93497690.03),
+('SAT014', 'Satellite 14', 'software update', '2020-08-21', 34368122.69),
+('SAT015', 'Satellite 15', 'communication failure', '2021-06-13', 66019143.33),
+('SAT016', 'Satellite 16', 'malfunctioning', '2020-11-29', 65643428.87),
+('SAT017', 'Satellite 17', 'testing', '2020-08-21', 58207469.72),
+('SAT018', 'Satellite 18', 'power loss', '2021-03-20', 25215103.54),
+('SAT019', 'Satellite 19', 'standby', '2022-04-03', 94358708.58),
+('SAT020', 'Satellite 20', 'under maintenance', '2022-03-28', 5619273.7),
+('SAT021', 'Satellite 21', 'inactive', '2021-11-08', 58044770.92),
+('SAT022', 'Satellite 22', 'payload deployment', '2022-02-28', 55613031.12),
+('SAT023', 'Satellite 23', 'sensor malfunction', '2022-01-11', 6610091.89),
+('SAT024', 'Satellite 24', 'standby', '2022-02-17', 37799744.37),
+('SAT025', 'Satellite 25', 'system reboot', '2020-08-21', 37468065.46),
+('SAT026', 'Satellite 26', 'orbit deviation', '2020-11-11', 39138244.53),
+('SAT027', 'Satellite 27', 'ready for launch', '2020-10-14', 59852397.33),
+('SAT028', 'Satellite 28', 'system reboot', '2022-03-13', 61378886.66),
+('SAT029', 'Satellite 29', 'signal interference', '2020-11-23', 23954354.6),
+('SAT030', 'Satellite 30', 'payload deployment', '2020-10-23', 56998366.17);
+SELECT * FROM SATELLITE;
+
+-- 6
+CREATE TABLE SENSOR (
+    SENSOR_ID varchar(10) PRIMARY KEY,
+    SEN_TYPE VARCHAR(255),
+    SEN_DETECTION_RANGE DECIMAL(10, 2),
+    SEN_DETECTION_FREQUENCY VARCHAR(255));
+INSERT INTO SENSOR (SENSOR_ID, SEN_TYPE, SEN_DETECTION_RANGE, SEN_DETECTION_FREQUENCY) VALUES 
+    ('SN551', 'current', 18114466.59, '180 Hz'),
+    ('SN552', 'temperature', 3705055.88, '20 Hz'),
+    ('SN553', 'pressure', 91185917.67, '150 Hz'),
+    ('SN554', 'sound', 25395609.89, '200 Hz'),
+    ('SN555', 'gas', 58394819.51, '220 Hz'),
+    ('SN556', 'sound', 69601924.25, '60 Hz'),
+    ('SN557', 'temperature', 21605405.01, '10 Hz'),
+    ('SN558', 'temperature', 87712687.0, '200 Hz'),
+    ('SN559', 'infrared', 21966670.91, '110 Hz'),
+    ('SN560', 'barometer', 98138795.56, '130 Hz'),
+    ('SN561', 'pressure', 26547012.46, '270 Hz'),
+    ('SN562', 'light', 74416404.7, '250 Hz'),
+    ('SN563', 'proximity', 15889732.03, '200 Hz'),
+    ('SN564', 'proximity', 47160220.05, '160 Hz'),
+    ('SN565', 'vibration', 84292007.73, '270 Hz'),
+    ('SN566', 'gyroscope', 72619183.02, '50 Hz'),
+    ('SN567', 'gas', 2361222.32, '90 Hz'),
+    ('SN568', 'humidity', 60741978.15, '300 Hz'),
+    ('SN569', 'vibration', 43905234.31, '210 Hz'),
+    ('SN570', 'sound', 92002727.49, '110 Hz'),
+    ('SN571', 'gas', 25524168.36, '210 Hz'),
+    ('SN572', 'heart rate', 29935489.13, '230 Hz'),
+    ('SN573', 'current', 93200855.84, '100 Hz'),
+    ('SN574', 'proximity', 99955907.26, '180 Hz'),
+    ('SN575', 'humidity', 93453786.87, '230 Hz'),
+    ('SN576', 'moisture', 42408760.09, '30 Hz'),
+    ('SN577', 'proximity', 44473002.31, '170 Hz'),
+    ('SN578', 'barometer', 63187970.59, '190 Hz'),
+    ('SN579', 'speed', 4139282.56, '260 Hz'),
+    ('SN580', 'proximity', 29556598.7, '80 Hz');
+SELECT * FROM SENSOR;
+
+-- 7
+CREATE TABLE COUNTRY (
+    COUNTRY_ID VARCHAR(20) PRIMARY KEY,
+    C_NAME VARCHAR(255),
+    C_ISO VARCHAR(255));
+INSERT INTO COUNTRY (COUNTRY_ID, C_NAME, C_ISO) VALUES
+('W00111', 'United States', 'ISO 9001:2015'),
+('W00112', 'Canada', 'ISO 31000:2018'),
+('W00113', 'Mexico', 'ISO 14001:2015'),
+('W00114', 'Brazil', 'ISO 39001:2012'),
+('W00115', 'Argentina', 'ISO 20121:2012'),
+('W00116', 'United Kingdom', 'ISO 19600:2014'),
+('W00117', 'Germany', 'ISO 31000:2018'),
+('W00118', 'France', 'ISO 20000-1:2018'),
+('W00119', 'Italy', 'ISO 10002:2018'),
+('W00120', 'Spain', 'ISO 22000:2018'),
+('W00121', 'Russia', 'ISO 20121:2012'),
+('W00122', 'China', 'ISO 31000:2018'),
+('W00123', 'Japan', 'ISO 14001:2015'),
+('W00124', 'India', 'ISO 20121:2012'),
+('W00125', 'Australia', 'ISO 22301:2019'),
+('W00126', 'South Africa', 'ISO 26000:2010'),
+('W00127', 'Nigeria', 'ISO 28000:2007'),
+('W00128', 'Egypt', 'ISO 27001:2013'),
+('W00129', 'Kenya', 'ISO 31000:2018'),
+('W00130', 'Saudi Arabia', 'ISO 17025:2017'),
+('W00131', 'United Arab Emirates', 'ISO 14001:2015'),
+('W00132', 'Turkey', 'ISO 22000:2018'),
+('W00133', 'South Korea', 'ISO 28000:2007'),
+('W00134', 'Indonesia', 'ISO 20121:2012'),
+('W00135', 'Thailand', 'ISO 26000:2010'),
+('W00136', 'Vietnam', 'ISO 22301:2019'),
+('W00137', 'New Zealand', 'ISO 14001:2015'),
+('W00138', 'Switzerland', 'ISO 28000:2007'),
+('W00139', 'Sweden', 'ISO 20000-1:2018'),
+('W00140', 'Norway', 'ISO 13485:2016');
+SELECT * FROM COUNTRY;
+
+-- 8
+CREATE TABLE ORGANIZATION (
+    ORGANIZATION_ID varchar(20) PRIMARY KEY,
+    O_NAME VARCHAR(255),
+    O_LOCATION VARCHAR(255),
+    O_CONTACT VARCHAR(255));
+INSERT INTO Organization (ORGANIZATION_ID, O_NAME, O_LOCATION, O_CONTACT) VALUES
+('SP961', 'Stellar Systems', 'Tokyo', '309-645-1256'),
+('SP962', 'Galactic Enterprises', 'Mumbai', '611-532-0829'),
+('SP963', 'Cosmic Ventures', 'Mumbai', '852-367-0844'),
+('SP964', 'Celestial Innovations', 'Dubai', '334-357-3610'),
+('SP965', 'Nebula Corporation', 'New York', '737-123-5285'),
+('SP966', 'AstroTech', 'Dubai', '842-404-0867'),
+('SP967', 'Starbound Solutions', 'Rio de Janeiro', '389-308-4833'),
+('SP968', 'Lunar Enterprises', 'Rio de Janeiro', '113-739-7324'),
+('SP969', 'Solar Nexus', 'Mumbai', '408-146-8508'),
+('SP970', 'Interstellar Holdings', 'Mumbai', '780-691-8487'),
+('SP971', 'Orion Industries', 'London', '396-604-4017'),
+('SP972', 'Nova Enterprises', 'Tokyo', '245-250-2192'),
+('SP973', 'Cosmos Corporation', 'New York', '817-750-7309'),
+('SP974', 'Astro Dynamics', 'Dubai', '764-143-7956'),
+('SP975', 'Galaxy Group', 'Tokyo', '849-863-2692'),
+('SP976', 'Comet Enterprises', 'Dubai', '172-120-1968'),
+('SP977', 'Saturn Solutions', 'Tokyo', '786-965-4374'),
+('SP978', 'Andromeda Innovations', 'New York', '202-433-5356'),
+('SP979', 'Milky Way Enterprises', 'Tokyo', '744-497-0441'),
+('SP980', 'Solaris Corporation', 'Toronto', '985-218-4721'),
+('SP981', 'Supernova Systems', 'Sydney', '626-404-1661'),
+('SP982', 'Cosmic Connections', 'Paris', '990-541-7190'),
+('SP983', 'Aurora Enterprises', 'Rio de Janeiro', '873-238-8696'),
+('SP984', 'Pulsar Innovations', 'Tokyo', '139-394-1417'),
+('SP985', 'Nebula Nexus', 'Sydney', '395-177-3133'),
+('SP986', 'AstroTech Solutions', 'Dubai', '202-363-5941'),
+('SP987', 'Starlight Holdings', 'London', '449-547-9344'),
+('SP988', 'Celestial Innovations', 'Tokyo', '689-426-3619'),
+('SP989', 'Galactic Nexus', 'Berlin', '850-139-7035'),
+('SP990', 'Stellar Solutions', 'Berlin', '805-556-9241');
+SELECT * FROM ORGANIZATION;
+
+-- 9
+CREATE TABLE REPORTS_TO (
+    ORGANIZATION_ID VARCHAR(20),
+    COUNTRY_ID VARCHAR(20),
+    PRIMARY KEY (ORGANIZATION_ID, COUNTRY_ID),
+    FOREIGN KEY (ORGANIZATION_ID) REFERENCES ORGANIZATION(ORGANIZATION_ID),
+    FOREIGN KEY (COUNTRY_ID) REFERENCES COUNTRY(COUNTRY_ID));
+INSERT INTO REPORTS_TO (ORGANIZATION_ID, COUNTRY_ID)VALUES
+('SP961', 'W00111'),
+('SP962', 'W00112'),
+('SP963', 'W00113'),
+('SP964', 'W00114'),
+('SP965', 'W00115'),
+('SP966', 'W00116'),
+('SP967', 'W00117'),
+('SP968', 'W00118'),
+('SP969', 'W00119'),
+('SP970', 'W00120'),
+('SP971', 'W00121'),
+('SP972', 'W00122'),
+('SP973', 'W00123'),
+('SP974', 'W00124'),
+('SP975', 'W00125'),
+('SP976', 'W00126'),
+('SP977', 'W00127'),
+('SP978', 'W00128'),
+('SP979', 'W00129'),
+('SP980', 'W00130'),
+('SP981', 'W00131'),
+('SP982', 'W00132'),
+('SP983', 'W00133'),
+('SP984', 'W00134'),
+('SP985', 'W00135'),
+('SP986', 'W00136'),
+('SP987', 'W00137'),
+('SP988', 'W00138'),
+('SP989', 'W00139'),
+('SP990', 'W00140');
+SELECT * FROM REPORTS_TO;
+
+-- 10
+create table SPACE_AGENCY (
+	AGENCY_ID VARCHAR(5),
+	A_NAME  VARCHAR(9),
+	A_LOCATION VARCHAR(14));
+INSERT INTO SPACE_AGENCY (AGENCY_ID, A_NAME, A_LOCATION) VALUES 
+    ('AG001', 'NASA', 'India'),
+    ('AG002', 'ESA', 'United States'),
+    ('AG003', 'ISRO', 'Brazil'),
+    ('AG004', 'JAXA', 'United States'),
+    ('AG005', 'CNSA', 'Japan'),
+    ('AG006', 'ROSCOSMOS', 'Japan'),
+    ('AG007', 'SPACEX', 'Canada'),
+    ('AG008', 'BOEING', 'Brazil'),
+    ('AG009', 'BLUEO', 'European Union'),
+    ('AG010', 'ORION', 'Japan'),
+    ('AG011', 'VOSTO', 'Canada'),
+    ('AG012', 'TITAN', 'India'),
+    ('AG013', 'LYNX', 'Russia'),
+    ('AG014', 'ZEPHY', 'European Union'),
+    ('AG015', 'ASTRA', 'European Union'),
+    ('AG016', 'VECTOR', 'Canada'),
+    ('AG017', 'ORBIT', 'European Union'),
+    ('AG018', 'SKYLA', 'European Union'),
+    ('AG019', 'NOVAE', 'United States'),
+    ('AG020', 'COSMI', 'Australia'),
+    ('AG021', 'APOLI', 'Canada'),
+    ('AG022', 'ALPHA', 'Australia'),
+    ('AG023', 'GAMMA', 'United States'),
+    ('AG024', 'DELTA', 'European Union'),
+    ('AG025', 'SIGMA', 'China'),
+    ('AG026', 'OMEGA', 'Canada'),
+    ('AG027', 'VENUS', 'Australia'),
+    ('AG028', 'MARS', 'China'),
+    ('AG029', 'PLUTO', 'Japan'),
+    ('AG030', 'NASA', 'Japan');
+SELECT * FROM SPACE_AGENCY;
+
+-- 11
+create table MANUFACTURER (
+	MANUFACTURE_ID VARCHAR(5),
+	M_NAME  VARCHAR(22),
+	M_LOCATION VARCHAR(13),
+	M_CONTACT VARCHAR(50));
+INSERT INTO MANUFACTURER (MANUFACTURE_ID, M_NAME, M_LOCATION, M_CONTACT) VALUES
+    ('MN331', 'GalacticTech', 'Australia', '717-613-6942'),
+    ('MN332', 'StellarSystems', 'Australia', '268-784-2884'),
+    ('MN333', 'CosmoParts', 'Brazil', '709-390-0377'),
+    ('MN334', 'AstroTech', 'United States', '992-509-1057'),
+    ('MN335', 'StarForge', 'Germany', '778-972-0515'),
+    ('MN336', 'CelestialMakers', 'India', '927-877-1250'),
+    ('MN337', 'NebulaIndustries', 'Italy', '803-594-9140'),
+    ('MN338', 'OrbitTech', 'Australia', '415-211-6751'),
+    ('MN339', 'LunarCraft', 'Japan', '798-631-7928'),
+    ('MN340', 'SaturnSolutions', 'China', '331-249-8680'),
+    ('MN341', 'CometComponents', 'India', '455-904-9869'),
+    ('MN342', 'SolarTech', 'Italy', '671-458-5883'),
+    ('MN343', 'AeroSpace', 'Canada', '107-325-0379'),
+    ('MN344', 'PlanetParts', 'Germany', '634-349-2532'),
+    ('MN345', 'RocketRise', 'France', '279-681-8564'),
+    ('MN346', 'AstroDynamics', 'Japan', '601-665-2084'),
+    ('MN347', 'CosmicCraft', 'United States', '336-875-3719'),
+    ('MN348', 'GalaxyGears', 'India', '880-383-1864'),
+    ('MN349', 'SpaceWorks', 'Germany', '834-422-6473'),
+    ('MN350', 'StarTech', 'Germany', '941-932-7652'),
+    ('MN351', 'OrionIndustries', 'Japan', '902-186-6639'),
+    ('MN352', 'MilkyWayMakers', 'Australia', '151-676-0569'),
+    ('MN353', 'NovaTech', 'United States', '272-448-1819'),
+    ('MN354', 'AstroForge', 'India', '373-868-3138'),
+    ('MN355', 'SatelliteSystems', 'Brazil', '950-301-9850'),
+    ('MN356', 'CosmoCraft', 'United States', '995-227-4125'),
+    ('MN357', 'InterstellarIndustries', 'Canada', '664-283-5279'),
+    ('MN358', 'SpaceXpress', 'Australia', '252-991-3112'),
+    ('MN359', 'AstroTech', 'India', '302-845-3514'),
+    ('MN360', 'CosmicComponents', 'United States', '846-192-5293');
+SELECT * FROM MANUFACTURER;
+
+CREATE INDEX idx_manufacturer_id ON MANUFACTURER(MANUFACTURE_ID);
+
+-- 12 
+CREATE TABLE COUNTRY_MANUFACTURER (
+    COUNTRY_ID VARCHAR(20),
+    MANUFACTURE_ID VARCHAR(5),
+    PRIMARY KEY (COUNTRY_ID, MANUFACTURE_ID),
+    FOREIGN KEY (COUNTRY_ID) REFERENCES COUNTRY(COUNTRY_ID),
+    FOREIGN KEY (MANUFACTURE_ID) REFERENCES MANUFACTURER(MANUFACTURE_ID));
+INSERT INTO COUNTRY_MANUFACTURER (COUNTRY_ID, MANUFACTURE_ID)VALUES
+('W00111', 'MN331'),
+('W00112', 'MN332'),
+('W00113', 'MN333'),
+('W00114', 'MN334'),
+('W00115', 'MN335'),
+('W00116', 'MN336'),
+('W00117', 'MN337'),
+('W00118', 'MN338'),
+('W00119', 'MN339'),
+('W00120', 'MN340'),
+('W00121', 'MN341'),
+('W00122', 'MN342'),
+('W00123', 'MN343'),
+('W00124', 'MN344'),
+('W00125', 'MN345'),
+('W00126', 'MN346'),
+('W00127', 'MN347'),
+('W00128', 'MN348'),
+('W00129', 'MN349'),
+('W00130', 'MN350'),
+('W00131', 'MN351'),
+('W00132', 'MN352'),
+('W00133', 'MN353'),
+('W00134', 'MN354'),
+('W00135', 'MN355'),
+('W00136', 'MN356'),
+('W00137', 'MN357'),
+('W00138', 'MN358'),
+('W00139', 'MN359'),
+('W00140', 'MN360');
+select * from COUNTRY_MANUFACTURER;
+
+-- 13
+create table LAUNCH_LICENSE (
+	LICENSE_ID VARCHAR(10),
+	L_ISSUE_DATE DATE,
+	L_EXPIRY_DATE DATE,
+	L_PURPOSE VARCHAR(50));
+INSERT INTO LAUNCH_LICENSE (LICENSE_ID, L_ISSUE_DATE, L_EXPIRY_DATE, L_PURPOSE) VALUES
+    ('LLN41', '2022-09-09', '2022-10-27', 'Exploration'),
+    ('LLN42', '2019-06-15', '2022-03-24', 'International collaboration'),
+    ('LLN43', '2022-02-17', '2020-11-26', 'Technology demonstration'),
+    ('LLN44', '2020-11-21', '2020-12-06', 'Technology demonstration'),
+    ('LLN45', '2020-11-16', '2019-11-10', 'Astronomy observation'),
+    ('LLN46', '2019-05-20', '2023-05-05', 'Astronomy observation'),
+    ('LLN49', '2022-09-28', '2021-09-05', 'Commercial satellite launch'),
+    ('LLN50', '2020-08-12', '2019-11-22', 'Astronomy observation'),
+    ('LLN51', '2022-04-19', '2022-05-03', 'Astronomy observation'),
+    ('LLN52', '2020-09-06', '2022-07-14', 'Scientific research'),
+    ('LLN53', '2021-09-22', '2019-09-14', 'Commercial satellite launch'),
+    ('LLN54', '2022-10-28', '2020-02-11', 'Technology demonstration'),
+    ('LLN55', '2019-03-12', '2023-06-22', 'Educational mission'),
+    ('LLN56', '2018-12-02', '2023-10-15', 'Military reconnaissance'),
+    ('LLN57', '2020-02-19', '2019-03-05', 'International collaboration'),
+    ('LLN58', '2020-05-15', '2021-02-06', 'Military reconnaissance'),
+    ('LLN59', '2022-08-18', '2022-04-11', 'Scientific research'),
+    ('LLN60', '2019-03-18', '2020-03-08', 'Space tourism'),
+    ('LLN61', '2020-05-30', '2020-03-05', 'Space tourism'),
+    ('LLN62', '2022-05-17', '2022-07-01', 'Military reconnaissance'),
+    ('LLN63', '2022-07-02', '2021-08-09', 'Technology demonstration'),
+    ('LLN64', '2022-06-13', '2022-03-05', 'International collaboration'),
+    ('LLN65', '2019-04-02', '2019-08-19', 'Satellite deployment'),
+    ('LLN66', '2022-01-20', '2019-09-23', 'Space tourism'),
+    ('LLN67', '2021-03-21', '2020-06-26', 'Scientific research'),
+    ('LLN68', '2021-11-11', '2022-07-04', 'Scientific research'),
+    ('LLN69', '2022-03-13', '2023-08-21', 'Exploration'),
+    ('LLN70', '2021-07-30', '2021-12-18', 'Space tourism'),
+     ('LF0061', '2022-09-09', '2022-10-27', 'Commercial Satellite Deployment'),
+    ('LF0062', '2019-06-15', '2022-03-24', 'Commercial Satellite Deployment');
+SELECT * FROM LAUNCH_LICENSE;
+
+-- 14
+create table TRACKING_STATION (
+	STATION_ID VARCHAR(5),
+	TS_NAME VARCHAR(15),
+	TS_LOCATION VARCHAR(14));
+INSERT INTO TRACKING_STATION (STATION_ID, TS_NAME, TS_LOCATION) VALUES
+    ('TS850', 'Alpha Station', 'United Kingdom'),
+    ('TS851', 'Beta Station', 'Japan'),
+    ('TS852', 'Gamma Station', 'Japan'),
+    ('TS853', 'Delta Station', 'India'),
+    ('TS854', 'Epsilon Station', 'United States'),
+    ('TS855', 'Zeta Station', 'Germany'),
+    ('TS856', 'Eta Station', 'United Kingdom'),
+    ('TS857', 'Theta Station', 'Brazil'),
+    ('TS858', 'Iota Station', 'France'),
+    ('TS859', 'Kappa Station', 'United Kingdom'),
+    ('TS860', 'Lambda Station', 'India'),
+    ('TS861', 'Mu Station', 'South Africa'),
+    ('TS862', 'Nu Station', 'India'),
+    ('TS863', 'Xi Station', 'Japan'),
+    ('TS864', 'Omicron Station', 'India'),
+    ('TS865', 'Pi Station', 'South Africa'),
+    ('TS866', 'Rho Station', 'United Kingdom'),
+    ('TS867', 'Sigma Station', 'India'),
+    ('TS868', 'Tau Station', 'Japan'),
+    ('TS869', 'Upsilon Station', 'United States'),
+    ('TS870', 'Phi Station', 'Brazil'),
+    ('TS871', 'Chi Station', 'India'),
+    ('TS872', 'Psi Station', 'India'),
+    ('TS873', 'Omega Station', 'India'),
+    ('TS874', 'Solaris Station', 'Brazil'),
+    ('TS875', 'Stellar Station', 'South Africa'),
+    ('TS876', 'Galaxy Station', 'Brazil'),
+    ('TS877', 'Nebula Station', 'Brazil'),
+    ('TS878', 'Cosmos Station', 'Canada'),
+    ('TS879', 'Orion Station', 'France');
+SELECT * FROM TRACKING_STATION;
+
+-- 15
+create table LAUNCH_FACILITY(
+	FACILITY_ID VARCHAR(6),
+	F_NAME VARCHAR(25),
+	F_LAUNCHED_DATE DATE,
+	F_LOCATION VARCHAR(13));
+INSERT INTO LAUNCH_FACILITY (FACILITY_ID, F_NAME, F_LAUNCHED_DATE, F_LOCATION) VALUES
+    ('LF0061', 'Alpha Spaceport', '2021-02-24', 'Canada'),
+    ('LF0062', 'Stellar Launch Facility', '2020-08-25', 'Australia'),
+    ('LF0063', 'Cosmo Launch Center', '2018-11-02', 'France'),
+    ('LF0064', 'Galaxy Spaceport', '2022-04-07', 'France'),
+    ('LF0065', 'Starlight Launch Site', '2021-02-24', 'Australia'),
+    ('LF0066', 'Nebula Launch Facility', '2019-05-12', 'Russia'),
+    ('LF0067', 'Orion Spaceport', '2021-02-19', 'United States'),
+    ('LF0068', 'Celestial Launch Center', '2021-02-24', 'Canada'),
+    ('LF0069', 'Aurora Spaceport', '2022-03-18', 'Russia'),
+    ('LF0070', 'Lunar Launch Facility', '2022-01-25', 'Germany'),
+    ('LF0071', 'Comet Spaceport', '2022-02-21', 'Canada'),
+    ('LF0072', 'Solaris Launch Site', '2022-04-14', 'China'),
+    ('LF0073', 'Supernova Spaceport', '2018-11-30', 'United States'),
+    ('LF0074', 'Nova Launch Facility', '2021-07-19', 'United States'),
+    ('LF0075', 'Astro Launch Center', '2020-09-26', 'Brazil'),
+    ('LF0076', 'Saturn Spaceport', '2021-02-24', 'Australia'),
+    ('LF0077', 'Meteor Launch Facility', '2019-04-18', 'Japan'),
+    ('LF0078', 'Voyager Spaceport', '2019-06-12', 'China'),
+    ('LF0079', 'Infinity Launch Center', '2021-02-24', 'Russia'),
+    ('LF0080', 'Pulsar Spaceport', '2020-02-04', 'Brazil'),
+    ('LF0081', 'Andromeda Launch Facility', '2020-07-17', 'Russia'),
+    ('LF0082', 'Cosmic Launch Center', '2021-02-24', 'Japan'),
+    ('LF0083', 'Galactic Spaceport', '2020-04-10', 'India'),
+    ('LF0084', 'Stardust Launch Facility', '2020-08-04', 'Russia'),
+    ('LF0085', 'Uranus Spaceport', '2019-02-07', 'Russia'),
+    ('LF0086', 'Milky Way Launch Center', '2021-11-16', 'France'),
+    ('LF0087', 'Eclipse Spaceport', '2022-06-06', 'Australia'),
+    ('LF0088', 'Mercury Launch Facility', '2019-06-01', 'India'),
+    ('LF0089', 'Zodiac Spaceport', '2021-02-24', 'France'),
+     ('LF0061', 'Alpha Spaceport', '2021-02-24', 'Canada'),
+    ('LF0062', 'Stellar Launch Facility', '2020-08-25', 'Australia');
+SELECT * FROM LAUNCH_FACILITY;
+
+
+
+
+-- QUERIES
+
+-- 1 SIMPLE QUERY
+-- Retrieve the Rocket IDs, names, launch dates, and the corresponding launch facility details for rockets launched after January 1, 2021.
+SELECT R.ROCKET_ID, R.R_NAME, R.R_LAUNCH_DATE, LF.FACILITY_ID, LF.F_NAME
+FROM ROCKET R
+JOIN LAUNCH_FACILITY LF ON R.R_LAUNCH_DATE = LF.F_LAUNCHED_DATE
+WHERE R.R_LAUNCH_DATE > '2021-01-01';
+
+
+-- 2 AGGREGATE QUERY 
+-- Retrieve the total mass of space debris launched by each rocket.
+SELECT R.ROCKET_ID, R.R_NAME, SD.DEBRIS_ID, SUM(SD.D_MASS) AS TOTAL_D_MASS
+FROM ROCKET R, SPACE_DEBRIS SD, PRESENT_IN P
+WHERE R.ROCKET_ID = P.ROCKET_ID
+AND P.DEBRIS_ID = SD.DEBRIS_ID
+GROUP BY R.ROCKET_ID, R.R_NAME, SD.DEBRIS_ID;
+
+
+-- 3 INNER AND OUTER JOIN QUERY 
+-- INNER JOIN
+-- Retrieve the details of satellites, including their names, launch dates, and the corresponding rocket names used for their launches.
+SELECT S.SATELLITE_ID, S.S_NAME, S.S_STATUS, S.S_LAUNCHED_DATE, R.R_NAME, R.R_PAYLOAD_CAPACITY
+FROM SATELLITE S
+INNER JOIN ROCKET R ON S.S_LAUNCHED_DATE = R.R_LAUNCH_DATE;
+
+-- OUTER JOIN
+-- Retrieve the average size of space debris and the launch facility names where each debris was last observed. 
+SELECT D.DEBRIS_ID, AVG(D.D_SIZE) AS AVERAGE_D_SIZE, LF.F_NAME
+FROM SPACE_DEBRIS D
+LEFT JOIN LAUNCH_FACILITY LF ON D.D_LAST_OBSERVED_DATE = LF.F_LAUNCHED_DATE
+GROUP BY LF.F_NAME, D.DEBRIS_ID;
+
+
+-- 4 NESTED QUERY
+-- Find the launch facilities that have been used to launch rockets with a payload capacity greater than the average payload capacity of all rockets.
+SELECT LF.FACILITY_ID, LF.F_NAME, LF.F_LAUNCHED_DATE, LF.F_LOCATION, R.R_NAME
+FROM LAUNCH_FACILITY LF, ROCKET R
+WHERE EXISTS (
+    SELECT *
+    FROM ROCKET R
+    WHERE R.R_PAYLOAD_CAPACITY > (
+        SELECT AVG(R_PAYLOAD_CAPACITY)
+        FROM ROCKET)
+    AND R.R_LAUNCH_DATE = LF.F_LAUNCHED_DATE);
+
+
+-- 5 CORRELATED QUERY
+-- Retrieve the debris with a size larger than the average size of debris originating from the same country as either the rocket named 'Falcon 9' or 'Starship'.
+SELECT D.DEBRIS_ID, R.ROCKET_ID, D.D_SIZE, D.D_MASS, R.R_NAME
+FROM SPACE_DEBRIS D, ROCKET R
+WHERE D.D_SIZE > (
+    SELECT AVG(D2.D_SIZE)
+    FROM SPACE_DEBRIS D2
+    INNER JOIN PRESENT_IN P ON D2.DEBRIS_ID = P.DEBRIS_ID
+    INNER JOIN ROCKET R ON P.ROCKET_ID = R.ROCKET_ID
+    WHERE (R.R_NAME = 'Falcon 9' OR R.R_NAME = 'Starship')
+      AND D2.D_ORIGIN = D.D_ORIGIN);
+
+
+-- 6  >=ALL/>ANY/ 
+-- Retrieve the names of rockets with a payload capacity greater than or equal to the maximum payload capacity of any rocket launched in 2021.
+SELECT ROCKET_ID, R_NAME
+FROM ROCKET
+WHERE R_PAYLOAD_CAPACITY >= ALL (
+    SELECT MAX(R_PAYLOAD_CAPACITY)
+    FROM ROCKET
+    WHERE YEAR(R_LAUNCH_DATE) = 2020);
+  
+   
+-- 7 EXISTS AND NOT EXISTS QUERY
+-- EXISTS
+-- Rockets observed by sensors
+SELECT R.ROCKET_ID, R.R_NAME
+FROM ROCKET R
+WHERE EXISTS (
+    SELECT 1
+    FROM PRESENT_IN P
+    JOIN SENSOR S ON P.ROCKET_ID = R.ROCKET_ID
+    WHERE S.SEN_DETECTION_FREQUENCY IS NOT NULL);
+    
+-- NOT EXISTS    
+-- Rockets without Launch Licenses
+SELECT D.DEBRIS_ID, D.D_SIZE, D.D_MASS, D.D_LAST_OBSERVED_DATE, D.D_ORIGIN
+FROM SPACE_DEBRIS D
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM PRESENT_IN PI
+    WHERE PI.DEBRIS_ID = D.DEBRIS_ID
+) OR D.D_LAST_OBSERVED_DATE < '2021-01-01';
+
+
+-- 8 SET OPERATIONS (UNION) QUERY
+-- Retrieve rockets launched by Long March 5 and retrieve satellites launched in France
+ SELECT R_NAME AS NEW_NAME, R_LAUNCH_DATE AS NEW_LAUNCH_DATE
+    FROM ROCKET
+    WHERE R_NAME IN ('Long March 5', 'Proton M', 'Soyuz', 'Electron','Minotaur','Pegasus')
+    UNION
+    SELECT S_NAME, S_LAUNCHED_DATE
+    FROM SATELLITE
+    WHERE SATELLITE_ID IN (
+        SELECT DISTINCT S.SATELLITE_ID
+        FROM SATELLITE S
+        INNER JOIN LAUNCH_FACILITY F ON S.S_LAUNCHED_DATE = F.F_LAUNCHED_DATE
+        WHERE F.F_LOCATION IN ('Turkey', 'France', 'Russia', 'China','Germany','Brazil'))
+    ORDER BY NEW_LAUNCH_DATE;
+
+
+
+
+
